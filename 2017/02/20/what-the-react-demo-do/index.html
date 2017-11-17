@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://wumingli.github.io">
+    <!--SEO-->
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>脚手架创建出来的React Demo使用说明 | 武明礼个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="武明礼个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css?rev=9.12.0">
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+    <div class="hide">
+    <script src="https://s4.cnzz.com/z_stat.php?id=1261768793&web_id=1263868967" language="JavaScript"></script>
+    </div>
+
+
+
+    
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="">
+            <img src="/img/avatar.jpg" alt="logo头像">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题">  
+             
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation"><a href="/"><i class="fa fa-fw "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/front-article/"><i class="fa fa-fw "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/css/"><i class="fa fa-fw "></i>样式</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/react/"><i class="fa fa-fw "></i>Reactjs</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/personal/"><i class="fa fa-fw "></i>关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="脚手架创建出来的React Demo使用说明">
+            
+            脚手架创建出来的React Demo使用说明
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <span>front article</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2017/02/20</span>
+    </span>
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body">
+        <h1 id="如何使用脚手架创建一个本地项目"><a href="#如何使用脚手架创建一个本地项目" class="headerlink" title="如何使用脚手架创建一个本地项目"></a>如何使用脚手架创建一个本地项目</h1><p>设置私服：<br>仅单纯的拉取私服上的依赖模块，执行下面的命令即可</p>
+<p>如果要发布一个npm的包，需要adduser，命令如下：（过程中会提示输入用户名、密码）</p>
+<blockquote>
+<p>复制的话不要复制上前面的$符号</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>npm adduser --registry http://zzfe.rcnpm.58corp.com/</span><br><span class="line"><span class="meta">$</span>npm install activity-react-cli -g --registry=http://zzfe.rcnpm.58corp.com/</span><br><span class="line"><span class="meta">#</span>注：Mac下需要运行以下命令：</span><br><span class="line"><span class="meta">$</span>sudo npm install activity-react-cli -g --registry=http://zzfe.rcnpm.58corp.com/</span><br></pre></td></tr></table></figure>
+<p>运行以下命令，全局安装脚手架（亦可将该包安装在任意目录，然后用npm link命令进行关联，推荐全局安装）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g activity-react-cli</span><br></pre></td></tr></table></figure>
+<p>安装完后后，即可用命令<code>actr init [project-name] [--branch-branchName]</code>来创建一个运营活动，默认基于react-redux分支进行创建，并自动添加activit-前缀，自动替换demo中的项目名称（demo中名为new-webpack-project）。</p>
+<blockquote>
+<p>脚手架安装完后，为避免以后安装npm包时必须经过该私服检查从而影响安装项目依赖包，可手动删除该配置项。具体步骤如下：</p>
+</blockquote>
+<ul>
+<li>npm config edit</li>
+<li>找到下面三行代码并删除：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">unsafe-perm=true</span><br><span class="line">registry=http://zzfe.58corp.com/npm</span><br><span class="line">//zzfe.58corp.com/:_authToken=&quot;CyaK533ZVOHKT1nScobk2yNuylpWTCbrrqh5iSVORNU=&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="开发-amp-测试-amp-上线命令"><a href="#开发-amp-测试-amp-上线命令" class="headerlink" title="开发&amp;测试&amp;上线命令"></a>开发&amp;测试&amp;上线命令</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//package.json脚本定义</span><br><span class="line">"scripts": &#123;</span><br><span class="line">  "dev": "NODE_ENV=dev webpack-dev-server --config webpack.config.js --inline --progress --colors",</span><br><span class="line">  "test": "NODE_ENV=test webpack --config webpack.config.js --progress --colors",</span><br><span class="line">  "prod": "NODE_ENV=production webpack --config webpack.config.js --progress --colors"</span><br><span class="line">&#125;</span><br><span class="line">//...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>npm run dev ——开发环境</li>
+<li>npm run test ——部署至测试环境</li>
+<li>npm run prod ——上线，并上传至线上Jekins的FTP服务器</li>
+<li><a href="http://build.58corp.com/view/others/view/zhuanzhuan/job/zhuanzhuan-fe-yunying-release-onlineenv/294/rebuild/parameterized" target="_blank" rel="noopener">http://build.58corp.com/view/others/view/zhuanzhuan/job/zhuanzhuan-fe-yunying-release-onlineenv/294/rebuild/parameterized</a> 替换自己的项目名称，上线（下图）</li>
+</ul>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fcwytvj4g6j30fg03gt90.jpg" alt=""></p>
+<h3 id="合并后的webpack-config-js"><a href="#合并后的webpack-config-js" class="headerlink" title="合并后的webpack.config.js"></a>合并后的webpack.config.js</h3><p>拆分or合并？这里我选择了合并，利用process.env.NODE_ENV进行区分开发环境，并选择不同的output/entry/plugin进行配置，个人认为更方便管理，如果你喜欢拆分，可以自行对webpack.config.js进行拆分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PROJECT_NAME = <span class="string">'new-webpack-project'</span>;</span><br><span class="line"><span class="comment">//用脚手架构建出来的项目会被替换成新建的项目名，如const PROJECT_NAME = 'acitivity-reduce-auction';</span></span><br></pre></td></tr></table></figure>
+<p>为给项目瘦身，demo中采用了react-lite，因此，需要在配置文件中作如下映射：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">  <span class="string">'react'</span>: <span class="string">'React'</span>,</span><br><span class="line">  <span class="string">'react-dom'</span>: <span class="string">'React'</span></span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">resolve: &#123;</span><br><span class="line">  ....</span><br><span class="line">  alias: &#123;</span><br><span class="line">    react: <span class="string">'//img.58cdn.com.cn/zhuanzhuan/libs/react-lite.min.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//开发环境会自动打开系统默认浏览器，并打开该项目</span></span><br><span class="line"><span class="keyword">const</span> opn = <span class="built_in">require</span>(<span class="string">'opn'</span>);</span><br><span class="line">opn(<span class="string">`http://127.0.0.1:<span class="subst">$&#123;APP_PORT&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<p>详细的可以看webpack.config.js，有任何意见或者建议都可以提出，该配置文件也会逐步完善、优化。</p>
+<h3 id="模板文件template-html"><a href="#模板文件template-html" class="headerlink" title="模板文件template.html"></a>模板文件template.html</h3><p>默认引入了微信分享的js库，以及react-lite库，渲染节点为id为react的div。</p>
+<p>Loading抽离成了组件，也可以把Loading相关的HTML放到渲染节点中，以防项目入口js加载&amp;执行前界面会白屏。</p>
+<p>默认加入了手机端视图meta，以及屏蔽电话号码、邮件的meta标签，如不需要可自行删除。</p>
+<h3 id="项目启动（入口）文件-src-app-jsx"><a href="#项目启动（入口）文件-src-app-jsx" class="headerlink" title="项目启动（入口）文件 src/app.jsx"></a>项目启动（入口）文件 src/app.jsx</h3><p>定义路由，以及项目的Render。如果不需要路由功能，只保留Main组件，并修改render方法第一个参数为<main>即可。</main></p>
+<h3 id="主组件src-components-Main-Main-jsx"><a href="#主组件src-components-Main-Main-jsx" class="headerlink" title="主组件src/components/Main/Main.jsx"></a>主组件src/components/Main/Main.jsx</h3><p>demo中的组件示例基本全在该文件中。列举几个有代表性的例子：</p>
+<ul>
+<li>ajax组件：简单的ajax抽离，项目中尽量避免用jQuery/zepto，该ajax组件可满足基本的异步操作。如果只是获取dom（当然React项目中获取dom的情形比较少）更不应该引入这些库，会使项目大很多。应该采用更优雅的获取dom的方式，如React中的refs，js中的querySelector等。</li>
+<li>createItem组件：采用了flux架构，具体见组件代码。</li>
+<li>Download组件：作了限制，如果是手机端，动态插入callapp.min.js，并显示在页面底部；PC端不显示该组件。</li>
+<li>List组件：加入了Lazyload功能</li>
+</ul>
+
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明: 商业转载请联系作者获得授权,非商业转载请注明出处 © Snippet
+            
+        </div>
+        <div>
+            
+                License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/04/25/wechat-video-autoplay/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
+    
+    
+        <a href="/2016/11/19/how-to-make-a-frontend-scaffold/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1966422"></script>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p>主题Snippet v1.1.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request。<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//wumingli.github.io" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:17978611@qq.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="//weibo.com/wumingli" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">Categories</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/"><i class="fa" aria-hidden="true">css</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/front-article/"><i class="fa" aria-hidden="true">front article</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/"><i class="fa" aria-hidden="true">html</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/"><i class="fa" aria-hidden="true">javascript</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/personal/"><i class="fa" aria-hidden="true">personal</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">Archives</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">September 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">July 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/"><i class="fa" aria-hidden="true">June 2016</i></a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+
+        
+        
+    <div class="widget">
+        <h3 class="title">Friends</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.shenliyang.com" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <script src="/assets/highlight.pack.js?rev=@@hash"></script>
+  <script>
+    hljs.initHighlightingOnLoad(); //初始化代码高亮 
+  </script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
