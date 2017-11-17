@@ -659,9 +659,6 @@ pre {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   word-wrap: break-word;
 }
-.post-content code br {
-  display: none;
-}
 .post-content tt {
   color: #808080;
   font-size: 0.96em;
