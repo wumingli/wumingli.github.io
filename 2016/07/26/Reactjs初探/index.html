@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://wumingli.github.io">
+    <!--SEO-->
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>小试牛刀——基于Reactjs的一个小Demo分享 | 武明礼个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="武明礼个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css?rev=9.12.0">
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+    <div class="hide">
+    <script src="https://s4.cnzz.com/z_stat.php?id=1261768793&web_id=1263868967" language="JavaScript"></script>
+    </div>
+
+
+
+    
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="">
+            <img src="/img/avatar.jpg" alt="logo头像">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题">  
+             
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation"><a href="/"><i class="fa fa-fw "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/front-article/"><i class="fa fa-fw "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/css/"><i class="fa fa-fw "></i>样式</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/react/"><i class="fa fa-fw "></i>Reactjs</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/personal/"><i class="fa fa-fw "></i>关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="小试牛刀——基于Reactjs的一个小Demo分享">
+            
+            小试牛刀——基于Reactjs的一个小Demo分享
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <span>front article</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/07/26</span>
+    </span>
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>478</strong>天之前发表，文中内容可能已经过时。
+            </p>
+            
+    </div>
+    
+    <div class="post-body">
+        <h1 id="React是什么"><a href="#React是什么" class="headerlink" title="React是什么"></a>React是什么</h1><p>React 是一个Facebook和Instagram用来创建用户界面的 JavaScript 库。<br>官方文档：<a href="https://facebook.github.io/react/docs/getting-started.html" target="_blank" rel="noopener">https://facebook.github.io/react/docs/getting-started.html</a><br>中文翻译：<a href="http://reactjs.cn/react/docs/getting-started.html" target="_blank" rel="noopener">http://reactjs.cn/react/docs/getting-started.html</a>，有些翻译并不十分准确而且可能并未与官网同步更新，英文好的同学可以直接阅读官方文档。</p>
+<p>React是<code>MVC</code>中的V</p>
+<p>React用虚拟DOM实现了一个非常强大的渲染系统，在React中，对DOM只更新不读取。</p>
+<p>Facebook创造 React 是为了解决一个问题：构建<strong>随着时间推移，数据不断变化的大规模应用程序</strong>。为了达到这个目标，React 采用下面两个主要的思想：</p>
+<ul>
+<li><code>简单</code> 只要表达出你的应用程序在任一个时间点应该长的样子，然后当底层的数据变了，React 会自动处理所有用户界面的更新。</li>
+<li><code>声明式（Declarative）</code> 数据变化后，React 概念上与点击“刷新”按钮类似，但仅会更新变化的部分。</li>
+</ul>
+<h1 id="React用来干什么：构建可组合的组件"><a href="#React用来干什么：构建可组合的组件" class="headerlink" title="React用来干什么：构建可组合的组件"></a>React用来干什么：构建可组合的组件</h1><p>React专注于构建可复用的组件。事实上，通过 React 你唯一要做的事情就是构建组件。得益于React良好的封装性，组件使代码复用、测试和关注点分离更加简单。</p>
+<p>组件可能会长下面这个样子<a href="https://github.com/wumingli/reactjs-demo" target="_blank" rel="noopener">更详细的组件见Demo</a>{:target=”_blank”}：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> User = React.createClass(&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">let</span> data = <span class="keyword">this</span>.props.data;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">        <span class="keyword">return</span>(&lt;div className="user-info"&gt;</span><br><span class="line">            &lt;dl&gt;</span><br><span class="line">                &lt;dt&gt;&lt;img src=&#123;data.avatar&#125; /&gt;&lt;/dt&gt;</span><br><span class="line">                &lt;dd&gt;&#123;data.name&#125; &#123;data.province&#125;&lt;/dd&gt;</span><br><span class="line">                &lt;dd&gt;评价&lt;i&gt;&#123;data.comments&#125;&lt;/i&gt; 买过&lt;i&gt;&#123;data.buy_count&#125;&lt;/i&gt; 加入转转&#123;data.join_time&#125;&lt;/dd&gt;</span><br><span class="line">            &lt;/dl&gt;</span><br><span class="line">        &lt;/div&gt;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>你可能注意到了，return 后面那坨html标签是什么鬼？下面该JSX出场了。</p>
+<h1 id="什么是JSX"><a href="#什么是JSX" class="headerlink" title="什么是JSX"></a>什么是JSX</h1><p>JSX 即 <code>Javascript XML</code>——一种在React组件内部构建标签的类XML语法。</p>
+<p>当然如果你有强迫症，不喜欢这样的混合写法，也可以不使用JSX。但使用JSX可以提高组件的可读性。</p>
+<p>不使用JSX的代码长这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">    <span class="string">'a'</span>,</span><br><span class="line">    &#123;</span><br><span class="line">        href: <span class="string">'http://facebook.github.io/react/'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'Hello React!'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>使用JSX瘦成了这样：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://facebook.github.io/react/"</span>&gt;</span>Hello React!<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>每个人都有自己的工作流，所以JSX 并不强制必须使用的——你可以喜欢胖子。。</p>
+<hr>
+<h1 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h1><h2 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h2><h3 id="首次实例化"><a href="#首次实例化" class="headerlink" title="首次实例化"></a>首次实例化</h3><p>getDefaultProps</p>
+<p>getInitialState</p>
+<p>componentWillMount</p>
+<p>render</p>
+<p>componentDidMount</p>
+<h3 id="实例化完成后的更新"><a href="#实例化完成后的更新" class="headerlink" title="实例化完成后的更新"></a>实例化完成后的更新</h3><p>getInitialState</p>
+<p>componentWillMount</p>
+<p>render</p>
+<p>componentDidMount</p>
+<h2 id="存在期"><a href="#存在期" class="headerlink" title="存在期"></a>存在期</h2><h3 id="组件已存在时的状态改变"><a href="#组件已存在时的状态改变" class="headerlink" title="组件已存在时的状态改变"></a>组件已存在时的状态改变</h3><p>componentWillReceiveProps</p>
+<p>shouldComponentUpdate</p>
+<p>componentWillUpdate</p>
+<p>render</p>
+<p>componentDidUpdate</p>
+<h2 id="销毁-amp-清理期"><a href="#销毁-amp-清理期" class="headerlink" title="销毁&amp;清理期"></a>销毁&amp;清理期</h2><p>componentWillUnmount</p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>生命周期共提供了10个不同的API。</p>
+<p>1.getDefaultProps</p>
+<p>作用于组件类，只调用一次，返回对象用于设置默认的props，对于引用值，会在实例中共享。</p>
+<p>2.getInitialState</p>
+<p>作用于组件的实例，在实例创建时调用一次，用于初始化每个实例的state，此时可以访问this.props。</p>
+<p>3.componentWillMount</p>
+<p>在完成首次渲染之前调用，此时仍可以修改组件的state。</p>
+<p>4.render</p>
+<p>必选的方法，创建虚拟DOM，该方法具有特殊的规则：</p>
+<ul>
+<li>只能通过this.props和this.state访问数据</li>
+<li>可以返回null、false或任何React组件</li>
+<li>只能出现一个顶级组件（不能返回数组）</li>
+<li>不能改变组件的状态</li>
+<li>不能修改DOM的输出</li>
+</ul>
+<p>5.componentDidMount</p>
+<p>真实的DOM被渲染出来后调用，在该方法中可通过this.getDOMNode()访问到真实的DOM元素。此时已可以使用其他类库来操作这个DOM。</p>
+<p>在服务端中，该方法不会被调用。</p>
+<p>6.componentWillReceiveProps</p>
+<p>组件接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件props及state。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">componentWillReceiveProps(nextProps) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nextProps.bool) &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            bool: <span class="literal">true</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7.shouldComponentUpdate</p>
+<p>组件是否应当渲染新的props或state，返回false表示跳过后续的生命周期方法，通常不需要使用以避免出现bug。在出现应用的瓶颈时，可通过该方法进行适当的优化。</p>
+<p>在首次渲染期间或者调用了forceUpdate方法后，该方法不会被调用</p>
+<p>8.componentWillUpdate</p>
+<p>接收到新的props或者state后，进行渲染之前调用，此时不允许更新props或state。</p>
+<p>9.componentDidUpdate</p>
+<p>完成渲染新的props或者state后调用，此时可以访问到新的DOM元素。</p>
+<p>10.componentWillUnmount</p>
+<p>组件被移除之前被调用，可以用于做一些清理工作，在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如创建的定时器或添加的事件监听器。</p>
+<h1 id="props和state"><a href="#props和state" class="headerlink" title="props和state"></a>props和state</h1><h2 id="props"><a href="#props" class="headerlink" title="props"></a>props</h2><p>props是properties的缩写，可以用它把任意数据类型的数据传递给组件。</p>
+<ul>
+<li>可以在挂载组件的时候设置它的props：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Loading</span> <span class="attr">show</span>=<span class="string">&#123;true&#125;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--在JSX中，可以把props设置为字符串：--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/surveys/add"</span>&gt;</span>Add survey<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--也可以使用&#123;&#125;语法来注入JS传递任意类型的变量：--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#123;</span>'/<span class="attr">surveys</span>/' + <span class="attr">survey.id</span>&#125;&gt;</span>&#123;survey.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>还可以使用展开语法把props设置成一个对象：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ListSurveys = React.createClass(&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">var</span> props = &#123;</span><br><span class="line">            one: <span class="string">'foo'</span>,</span><br><span class="line">            two: <span class="string">'bar'</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">SurveyTable</span> &#123;<span class="attr">...props</span>&#125; /&gt;</span>;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">&#125;);</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>或者通过组件实例的setProps方法来设置其props（很少这样做）：</p>
+</li>
+<li><p>props还可以用来添加事件处理器</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>test click<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>每一个React组件都可以拥有自己的state，state与props的区别在于前者只存在于组件内部。</p>
+<p>state可以用来确定一个元素的视图状态，具体可见demo中的<strong><code>Loading组件</code></strong>。</p>
+<p>state可以通过setState来修改，也可以使用getInitialState方法提供一组默认值。<br>只要setState被调用，render方法就会被调用。</p>
+<p>如果render函数的返回值有变化，虚拟DOM就会更新，真实DOM也会被更新，最终用户就会在浏览器中看到变化。</p>
+<p>注：<strong>千万不要直接修改this.state，永远记得要通过this.setState方法修改。</strong></p>
+<h2 id="放在state和props的各是哪些部分"><a href="#放在state和props的各是哪些部分" class="headerlink" title="放在state和props的各是哪些部分"></a>放在state和props的各是哪些部分</h2><p>不要在state中保存计算出的值，理想情况下应该只保存最简单的数据，即那些组件正常工作时的必要数据。比如一个复选框的勾选状态、demo中的显示Loading开关。</p>
+<p>不要尝试把props复制到state中，尽可能把props当作数据源。</p>
+<h1 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h1><p>React通过将事件处理器绑定到组件上来处理事件，在事件被触发的同时来更新组件内部的状态，从而引发组件重绘。</p>
+<p>视图层想要渲染出事件触发后的结果，只需要在渲染函数中判断组件的内部状态（如this.state）。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>查看更多留言<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong> 上面代码写法上类似平时不推荐的内联事件处理器属性，但实际上React在底层实现上并没有使用HTML的onclick，只是用这种写法来绑定事件处理器，其内部则按照需要更高效地维护着事件处理器。</p>
+<p>React对处理各种事件类型提供了友好的支持，具体见其<a href="https://facebook.github.io/react/docs/events.html" target="_blank" rel="noopener">事件系统</a>{:target=”_black”}</p>
+<p>其中绝大部分事件不需要额外的处理就能正常使用，但触控事件需要通过调用以下代码启用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.initializeTouchEvents(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="根据状态进行渲染"><a href="#根据状态进行渲染" class="headerlink" title="根据状态进行渲染"></a>根据状态进行渲染</h2><p>上面说过，setState会引起render被调用，所以可以在render函数中通过this.state渲染不同的状态。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    <span class="keyword">let</span> loadingStatus = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state.show) &#123;</span><br><span class="line">        loadingStatus = <span class="string">' on'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        ...</span><br><span class="line">        &lt;div className=&#123;<span class="string">'loading'</span> + loadingStatus&#125; ...&gt;</span><br><span class="line">        ...</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再次提醒，永远不要尝试通过setState或replaceState以外的方式去修改state对象，如this.state.show = true就不是个好做法，因为它无法通知React是否需要重新渲染组件，而且可能会导致下次调用setState时出现意外结果。</p>
+<h1 id="复合组件"><a href="#复合组件" class="headerlink" title="复合组件"></a>复合组件</h1><p>React组件中不存在继承，而是通过组件之间的组合（复合）来构建应用。所以用“父、子组件”来表达可能不太合适，因为它们的关系是复合，而非继承。表面上看，某个组件调用了另外一个组件，像是父子关系，所以我们这里还是叫它们父组件或子组件。</p>
+<p>本质上，React组件就是一个Javascript函数，它接受属性（props）和状态（state）作为参数，并输出渲染好的HTML。</p>
+<p>复合组件的例子可以参照Demo中的detail组件。</p>
+<h2 id="组件间的通信"><a href="#组件间的通信" class="headerlink" title="组件间的通信"></a>组件间的通信</h2><p>ReactJS中数据的流动是单向的，父组件的数据可以通过设置子组件的props传递数据给子组件。</p>
+<p>如果想让子组件改变父组件的数据，可以在父组件中传一个callback(回调函数)给子组件，子组件内调用这个callback即可改变父组件的数据。</p>
+<p>更详细的组件之间的通信，可以参考<a href="http://www.alloyteam.com/2016/01/some-methods-of-reactjs-communication-between-components/" target="_blank" rel="noopener">这篇文章</a>{:target=”_black”}。</p>
+<h1 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h1><p>CssTranstionGroup：React组件进入或者离开DOM的时候，简单地执行CSS过渡和动画。<br>requestAnimationFrame：利用componentWillUpdate触发。</p>
+<h1 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h1><p>在从 render 方法中返回UI结构之后，突破React的虚拟DOM限制，返回真实的DOM元素。</p>
+<p>用法如下：</p>
+<ul>
+<li>绑定一个 ref 属性到 render 返回的东西上面去，例如：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">"myInput"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在其它代码中（典型地事件处理代码），通过 this.refs 获取<em>支撑实例（ backing instance ）</em>：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.refs.myInput</span><br></pre></td></tr></table></figure>
+<p>这样就可以通过调用 this.refs.myInput.getDOMNode() 直接获取到组件的真实DOM节点。</p>
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><p>路由是在单页面应用（SPA）中为URL指定处理器函数。</p>
+<p>React仅仅是一个渲染类库，自身不具备路由功能。不过有很多路由模块可以搭配React使用。因为分享的是React，所以Demo中采用的是react-router，是由React Component构成的。</p>
+<p>常用的与React搭配的路由模块：</p>
+<ul>
+<li>Backbone.Router</li>
+<li>Aviator</li>
+<li>react0-router</li>
+<li>Om(ClojureScript)</li>
+</ul>
+<h1 id="关于公共组件的开发"><a href="#关于公共组件的开发" class="headerlink" title="关于公共组件的开发"></a>关于公共组件的开发</h1><p>崇跃问的一个问题，组件样式的抽离是否可以实现，试了一下是可以的。开发时把组件样式放到单独的css（less/sass）中，在组件内require即可。具体见popup或animate组件。</p>
+<h1 id="webpack配置"><a href="#webpack配置" class="headerlink" title="webpack配置"></a>webpack配置</h1><p>在package.json中指定dev和release引用的配置文件，demo中指定了webpack.config.pro.js用于完成后的打包工作。</p>
+
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明: 商业转载请联系作者获得授权,非商业转载请注明出处 © Snippet
+            
+        </div>
+        <div>
+            
+                License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2016/09/12/zz-activity-with-createjs/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
+    
+    
+        <a href="/2016/06/11/catogries-regexp/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1966422"></script>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p>主题Snippet v1.1.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request。<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//wumingli.github.io" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:17978611@qq.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="//weibo.com/wumingli" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">Categories</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/"><i class="fa" aria-hidden="true">css</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/front-article/"><i class="fa" aria-hidden="true">front article</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/"><i class="fa" aria-hidden="true">html</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/"><i class="fa" aria-hidden="true">javascript</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/personal/"><i class="fa" aria-hidden="true">personal</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">Archives</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">September 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">July 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/"><i class="fa" aria-hidden="true">June 2016</i></a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+
+        
+        
+    <div class="widget">
+        <h3 class="title">Friends</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.shenliyang.com" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <script src="/assets/highlight.pack.js?rev=@@hash"></script>
+  <script>
+    hljs.initHighlightingOnLoad(); //初始化代码高亮 
+  </script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

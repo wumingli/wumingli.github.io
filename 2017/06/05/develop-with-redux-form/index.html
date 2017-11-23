@@ -1,0 +1,427 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://wumingli.github.io">
+    <!--SEO-->
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>浅谈redux-form在项目中的运用 | 武明礼个人博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="武明礼个人博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css?rev=9.12.0">
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+    <div class="hide">
+    <script src="https://s4.cnzz.com/z_stat.php?id=1261768793&web_id=1263868967" language="JavaScript"></script>
+    </div>
+
+
+
+    
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="">
+            <img src="/img/avatar.jpg" alt="logo头像">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题">  
+             
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation"><a href="/"><i class="fa fa-fw "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/front-article/"><i class="fa fa-fw "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/css/"><i class="fa fa-fw "></i>样式</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/react/"><i class="fa fa-fw "></i>Reactjs</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/personal/"><i class="fa fa-fw "></i>关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="浅谈redux-form在项目中的运用">
+            
+            浅谈redux-form在项目中的运用
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <span>front article</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2017/06/05</span>
+    </span>
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body">
+        <h1 id="准则"><a href="#准则" class="headerlink" title="准则"></a>准则</h1><p>先说一下redux的使用场景，因为如果没有redux，那更不会有redux-form。</p>
+<p>redux基于Flux架构思想，是一个<code>状态管理</code>框架，其目标是解决单页面应用中复杂的状态管理问题。</p>
+<p>日常前端开发中，如果只是做一个简单的运营活动页面，甚至是一些路由稍微复杂一些的SPA项目，都可能用不到redux；只有在页面存在多种数据来源，交互非常复杂的项目中，才有必要引入redux。</p>
+<p>redux的作者Dan Abramov指出：</p>
+<blockquote>
+<p>“只有遇到 React 实在解决不了的问题，你才需要 redux 。”</p>
+</blockquote>
+<p>前些日子开发的转转魔方系统，用于搭建转转日常的运营活动页面，因组件较多，交互复杂，采用了React+redux架构。先上一张“高大上”的截图（当然后台布局、配色可以忽略，因为没有UI资源，是我自己瞎搞的）：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fgceo1jvwtj30zy0ltjt5.jpg" alt=""></p>
+<p>辣么，为什么采用redux-form呢？<br>先让我们看一下两个普通的表单：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fgcfd7twgdj30dw0b1mxh.jpg" alt=""><br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fgcfd7pce6j30dw0att8z.jpg" alt=""></p>
+<p>相像一下，如果用state来保存要提交的数据，用<code>onChange</code>来获取用户输入，然后改变state中相应数据荐，简直是梦魇一般。</p>
+<p>幸亏，我们有redux和redux-form，redux用来<code>管理状态</code>，redux-form来负责<code>表单数据</code>部分。</p>
+<blockquote>
+<p>本文不介绍redux，如果想了解关于redux的更多，可以移步<a href="http://www.redux.org.cn/" target="_blank" rel="noopener">http://www.redux.org.cn/</a><br>还可以参考阮一峰大神写的教程：<a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html</a></p>
+</blockquote>
+<hr>
+<p>好了，废话说了一大堆了，现在让我们进入正题：</p>
+<p>redux-form主要做以下4件事：</p>
+<ul>
+<li>一个 redux reducer，监听redux-form派发出的<code>actions</code>，统一管理我们redux中的form state；</li>
+<li>一个React组件装饰器，包含我们用高阶组件组装的整个form，提供一个带一些props的纯函数；</li>
+<li>一个Filed组件将用户输入与redux store相连接；</li>
+<li>用单个的Action Creator将我们的form与应用挂勾在一起。</li>
+</ul>
+<p><strong>先来了解一下redux-form的生命周期：</strong></p>
+<p><img src="https://raw.githubusercontent.com/erikras/redux-form/master/docs/valueLifecycle.png" alt=""></p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>必须要做的第一步，是先把redux-form的reducer用combineReducer方法给到redux。不管我们的应用中有多少form组件，我们只需要执行一次这样的操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; reducer <span class="keyword">as</span> formReducer &#125; <span class="keyword">from</span> <span class="string">'redux-form'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reducers = &#123;</span><br><span class="line">  <span class="comment">// ... your other reducers here ...</span></span><br><span class="line">  form: formReducer     <span class="comment">// &lt;---- Mounted at 'form'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> reducer = combineReducers(reducers);</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>请注意，传递给redux-form的默认key为<code>form</code>，虽然支持自定义key names，但一般情况下请勿修改这个名字。详见<a href="http://redux-form.com/6.7.0/docs/api/ReduxForm.md/#-getformstate-function-optional-" target="_blank" rel="noopener">http://redux-form.com/6.7.0/docs/api/ReduxForm.md/#-getformstate-function-optional-</a>。</p>
+</blockquote>
+<p>第二步，将普通表单组件用reduxForm()方法装饰，如此一来我们的组件才会拥有form state和一些表单方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Field, reduxForm &#125; <span class="keyword">from</span> <span class="string">'redux-form'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> SimpleForm = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; handleSubmit, pristine, reset, submitting &#125; = props;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;form onSubmit=&#123;handleSubmit&#125;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;label&gt;First Name&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">          &lt;Field</span></span><br><span class="line"><span class="regexp">            name="firstName"</span></span><br><span class="line"><span class="regexp">            component="input"</span></span><br><span class="line"><span class="regexp">            type="text"</span></span><br><span class="line"><span class="regexp">            placeholder="First Name"</span></span><br><span class="line"><span class="regexp">          /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;label&gt;Last Name&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">          &lt;Field</span></span><br><span class="line"><span class="regexp">            name="lastName"</span></span><br><span class="line"><span class="regexp">            component="input"</span></span><br><span class="line"><span class="regexp">            type="text"</span></span><br><span class="line"><span class="regexp">            placeholder="Last Name"</span></span><br><span class="line"><span class="regexp">          /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">      <span class="comment">//其他表单项</span></span><br><span class="line">    &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default reduxForm(&#123;</span></span><br><span class="line"><span class="regexp">  form: 'simple',</span></span><br><span class="line"><span class="regexp">&#125;)(SimpleForm);</span></span><br></pre></td></tr></table></figure>
+<p><code>请注意</code>：const { handleSubmit, pristine, reset, submitting } = props中的各项并<code>`不是</code>从它的父组件传过递，而是从<code>redux-form传递过来</code>。</p>
+<blockquote>
+<p><code>pristine</code>、<code>submitting</code>分别可以标识表单的当前状态。<br>pristine表示表单还没有进行任何动作，如<code>输入</code>、<code>获取、失去焦点</code>等<br>submitting表示正在提交</p>
+</blockquote>
+<p>我们也可以主动告诉redux-form我们希望管理哪些输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="attr">fields</span>: &#123; name, address, phone &#125;, handleSubmit &#125; = props;</span><br></pre></td></tr></table></figure>
+<h3 id="初始化数据"><a href="#初始化数据" class="headerlink" title="初始化数据"></a>初始化数据</h3><p>在日常前端开发过程中，尤其是后台OA中，经常会遇到新增和编辑页面，此时如果建两个页面（或者用两个不同View的路由），无疑会增加日后维护成本（学习React之初踩过这个坑），所以<code>初始化数据</code>尤为重要。</p>
+<p>redux-form提供initialValues，以供表单初绍化数据。</p>
+<p>官网中的初始化数据来自<code>reducer</code>（Reducer设计优雅的基础上，推荐此方法）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Decorate with reduxForm(). It will read the initialValues prop provided by connect()</span></span><br><span class="line">InitializeFromStateForm = reduxForm(&#123;</span><br><span class="line">  form: <span class="string">'initializeFromState'</span> <span class="comment">// a unique identifier for this form</span></span><br><span class="line">&#125;)(InitializeFromStateForm)</span><br><span class="line"></span><br><span class="line"><span class="comment">// You have to connect() to any reducers that you wish to connect to yourself</span></span><br><span class="line">InitializeFromStateForm = connect(</span><br><span class="line">  state =&gt; (&#123;</span><br><span class="line">    initialValues: state.account.data <span class="comment">// pull initial values from account reducer</span></span><br><span class="line">  &#125;)</span><br><span class="line">)(InitializeFromStateForm)</span><br></pre></td></tr></table></figure>
+<p>当然我们的数据也可能来自props（理论上数据应该完全放到一个store中，但实际项目开发过程中却未必——我们还是会用到setState，因为某个state可能只是特定组件的一个开关，没有必要放到store中）。</p>
+<p>转转魔方系统中的页面配置初始数据就是来自props：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ConfigBoxForm = reduxForm(&#123;</span><br><span class="line">  form: <span class="string">'configForm'</span>,</span><br><span class="line">&#125;)(ConfigBox);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  (state, ownProps) =&gt; (&#123;</span><br><span class="line">    initialValues: ownProps.data,</span><br><span class="line">  &#125;),</span><br><span class="line">)(ConfigBoxForm);</span><br></pre></td></tr></table></figure>
+<h3 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h3><p>数据校验是表单操作中必不可少的一部分，redux-form为我们提供了3种数据校验方法：</p>
+<ol>
+<li>同步验证，包含Field-Level校验；</li>
+<li>提交数据合法性验证（非数据格式，如用户名+密码是否匹配等）；</li>
+<li>异步验证（Async Validate）</li>
+</ol>
+<h4 id="同步验证"><a href="#同步验证" class="headerlink" title="同步验证"></a>同步验证</h4><p>同步验证有两种方式。</p>
+<ol>
+<li>通过一个自定义的验证函数，这个函数默认会传入携带表单字段值组成的一个object，返回对象为一个error组成的<strong>object对象</strong>。</li>
+<li>在Field组件中传入一个validate的props，把需要验证的字段单独或者以数据形式传入。</li>
+</ol>
+<p>以自定义验证函数为例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单个字段验证</span></span><br><span class="line"><span class="keyword">const</span> validate = <span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> errors = &#123;</span><br><span class="line">    content: &#123;&#125;,</span><br><span class="line">    <span class="comment">//style: &#123;&#125;,</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">if</span> (!values.content.src) &#123;</span><br><span class="line">    errors.content.src = <span class="string">'请选择图片'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> errors;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//多字段验证（array.map时）</span></span><br><span class="line"><span class="keyword">const</span> validate = <span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> errors = &#123;</span><br><span class="line">    content: [],</span><br><span class="line">  &#125;;</span><br><span class="line">  values.content.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!item.src) &#123;</span><br><span class="line">      errors.content[index] = &#123;</span><br><span class="line">        src: <span class="string">'请选择图片'</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> errors;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>redux-form的验证还支持warning，该警告不阻止表单提交，只给出提示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> warn = <span class="function"><span class="params">values</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> warnings = &#123;&#125;;</span><br><span class="line">  <span class="keyword">if</span> (values.age &lt; <span class="number">18</span>) &#123;</span><br><span class="line">    warnings.age = <span class="string">'不满18岁'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> warnings;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>跟初始化数据一样，验证规则同样需要通知redux-form：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reduxForm(&#123;</span><br><span class="line">  form: <span class="string">'syncValidation'</span>,</span><br><span class="line">  validate,</span><br><span class="line">  warn</span><br><span class="line">&#125;)(SyncValidationForm)</span><br></pre></td></tr></table></figure>
+<h4 id="提交数据合法性验证（英语不好，官方叫Submit-Validation，根据Demo示例我给引申了一下）"><a href="#提交数据合法性验证（英语不好，官方叫Submit-Validation，根据Demo示例我给引申了一下）" class="headerlink" title="提交数据合法性验证（英语不好，官方叫Submit Validation，根据Demo示例我给引申了一下）"></a>提交数据合法性验证（英语不好，官方叫Submit Validation，根据Demo示例我给引申了一下）</h4><p>用redux-form做服务端的推荐方式，是从onSumit方法中返回一个失败的（rejected）promise。</p>
+<p>在表单的提交函数中，redux-form也提供了两种方式来校验：</p>
+<ol>
+<li>通过props中的onSumit函数传递给装饰组件；</li>
+<li>通过参数中的this.props.handleSubmit将form做为该函数的实参传递，可以在组件内部使用<code>onClick={this.props.handleSubmit(mySubmit)}</code>来代替提交按扭的默认提交事件。</li>
+</ol>
+<p><strong>submit.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;SubmissionError&#125; <span class="keyword">from</span> <span class="string">'redux-form'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sleep = <span class="function"><span class="params">ms</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, ms));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params">values</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> sleep(<span class="number">1000</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// simulate server latency</span></span><br><span class="line">    <span class="keyword">if</span> (![<span class="string">'john'</span>, <span class="string">'paul'</span>, <span class="string">'george'</span>, <span class="string">'ringo'</span>].includes(values.username)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> SubmissionError(&#123;</span><br><span class="line">        username: <span class="string">'User does not exist'</span>,</span><br><span class="line">        _error: <span class="string">'Login failed!'</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (values.password !== <span class="string">'redux-form'</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> SubmissionError(&#123;</span><br><span class="line">        password: <span class="string">'Wrong password'</span>,</span><br><span class="line">        _error: <span class="string">'Login failed!'</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">window</span>.alert(<span class="string">`You submitted:\n\n<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(values, <span class="literal">null</span>, <span class="number">2</span>)&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> submit;</span><br></pre></td></tr></table></figure>
+<p>在装饰组件中这样触发：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//...省略其他代码</span></span><br><span class="line"><span class="keyword">const</span> SubmitValidationForm = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;error, handleSubmit, pristine, reset, submitting&#125; = props;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;form onSubmit=&#123;handleSubmit(submit)&#125;&gt;</span><br><span class="line">      &lt;Field</span><br><span class="line">        name=<span class="string">"username"</span></span><br><span class="line">        type=<span class="string">"text"</span></span><br><span class="line">        component=&#123;renderField&#125;</span><br><span class="line">        label=<span class="string">"Username"</span></span><br><span class="line">      /&gt;</span><br><span class="line">      <span class="comment">//...省略其他代码</span></span><br><span class="line">    &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br></pre></td></tr></table></figure>
+<h4 id="异步验证（Async-Validation）"><a href="#异步验证（Async-Validation）" class="headerlink" title="异步验证（Async Validation）"></a>异步验证（Async Validation）</h4><p>服务端异步验证最好的方式是Submit Validation，有时候在我们输入表单后，会即时的进行服务端验证，比如注册的时候验证用户名是否已存在。</p>
+<p>asyncValidate通常也返回一个error或者resolve的reject对象。</p>
+<p><strong>asyncValidate.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sleep = <span class="function"><span class="params">ms</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(resolve, ms));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> asyncValidate = <span class="function">(<span class="params">values <span class="regexp">/*, dispatch */</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> sleep(<span class="number">1000</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// simulate server latency</span></span><br><span class="line">    <span class="keyword">if</span> ([<span class="string">'john'</span>, <span class="string">'paul'</span>, <span class="string">'george'</span>, <span class="string">'ringo'</span>].includes(values.username)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> &#123;<span class="attr">username</span>: <span class="string">'That username is taken'</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> asyncValidate;</span><br></pre></td></tr></table></figure>
+<p><strong>validate.js省略</strong></p>
+<p><strong>AsyncValidationForm.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncValidate <span class="keyword">from</span> <span class="string">'./asyncValidate'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> renderField = (&#123;</span><br><span class="line">  input,</span><br><span class="line">  label,</span><br><span class="line">  type,</span><br><span class="line">  meta: &#123;asyncValidating, touched, error&#125;</span><br><span class="line">&#125;) =&gt; (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;label&gt;&#123;label&#125;&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div className=&#123;asyncValidating ? 'async-validating' : ''&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &lt;input &#123;...input&#125; type=&#123;type&#125; placeholder=&#123;label&#125; /</span>&gt;</span><br><span class="line">      &#123;touched &amp;&amp; error &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;error&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> AsyncValidationForm = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;handleSubmit, pristine, reset, submitting&#125; = props</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;form onSubmit=&#123;handleSubmit&#125;&gt;</span><br><span class="line">      &lt;Field</span><br><span class="line">        name=<span class="string">"username"</span></span><br><span class="line">        type=<span class="string">"text"</span></span><br><span class="line">        component=&#123;renderField&#125;</span><br><span class="line">        label=<span class="string">"Username"</span></span><br><span class="line">      /&gt;</span><br><span class="line">      <span class="comment">//其他代码省略</span></span><br><span class="line">    &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default reduxForm(&#123;</span></span><br><span class="line"><span class="regexp">  form: 'asyncValidation',</span></span><br><span class="line"><span class="regexp">  validate, /</span><span class="regexp">/普通校验，代码已省略</span></span><br><span class="line"><span class="regexp">  asyncValidate, /</span><span class="regexp">/异步校验规则</span></span><br><span class="line"><span class="regexp">  asyncBlurFields: ['username'] /</span><span class="regexp">/重点在这，可以指定哪几个表单项失去焦点时触发验证</span></span><br><span class="line"><span class="regexp">&#125;)(AsyncValidationForm);</span></span><br></pre></td></tr></table></figure>
+<h3 id="表单联动"><a href="#表单联动" class="headerlink" title="表单联动"></a>表单联动</h3><p>表单联动需要用connect()方法将表单的values与redux store相关连。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;Field, reduxForm, formValueSelector&#125; <span class="keyword">from</span> <span class="string">'redux-form'</span>;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;label htmlFor=<span class="string">"hasEmail"</span>&gt;Has Email?<span class="xml"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Field</span><br><span class="line">      name=<span class="string">"hasEmail"</span></span><br><span class="line">      id=<span class="string">"hasEmail"</span></span><br><span class="line">      component=<span class="string">"input"</span></span><br><span class="line">      type=<span class="string">"checkbox"</span></span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">&#123;</span><br><span class="line">  hasEmailValue &amp;&amp;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;label&gt;Email&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Field</span></span><br><span class="line"><span class="regexp">        name="email"</span></span><br><span class="line"><span class="regexp">        component="input"</span></span><br><span class="line"><span class="regexp">        type="email"</span></span><br><span class="line"><span class="regexp">        placeholder="Email"</span></span><br><span class="line"><span class="regexp">      /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SelectingFormValuesForm = reduxForm(&#123;</span><br><span class="line">  form: <span class="string">'selectingFormValues'</span></span><br><span class="line">&#125;)(SelectingFormValuesForm);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selector = formValueSelector(<span class="string">'selectingFormValues'</span>); <span class="comment">//参数要与from名字相同</span></span><br><span class="line">SelectingFormValuesForm = connect(<span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> hasEmailValue = selector(state, <span class="string">'hasEmail'</span>);</span><br><span class="line">  <span class="keyword">const</span> favoriteColorValue = selector(state, <span class="string">'favoriteColor'</span>);</span><br><span class="line">  <span class="keyword">const</span> &#123;firstName, lastName&#125; = selector(state, <span class="string">'firstName'</span>, <span class="string">'lastName'</span>);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    hasEmailValue,</span><br><span class="line">    favoriteColorValue,</span><br><span class="line">    fullName: <span class="string">`<span class="subst">$&#123;firstName || <span class="string">''</span>&#125;</span> <span class="subst">$&#123;lastName || <span class="string">''</span>&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(SelectingFormValuesForm);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> SelectingFormValuesForm;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里有一条<code>警告</code>：此方法要慎用，因为每次change会引发要重绘。react性能虽然牛逼，但也不要故意给它施加压力。</p>
+</blockquote>
+<h3 id="与React插件库搭配使用"><a href="#与React插件库搭配使用" class="headerlink" title="与React插件库搭配使用"></a>与React插件库搭配使用</h3><p>这里只举一个DateTimePicker的例子，其他的正常使用即可。<br>DateTimePicker，需要value值为date或者null类型。<br>笔者使用过程中，就遇到过一个神坑。</p>
+<p>首先，要引入组件库的依赖：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//其他依赖</span></span><br><span class="line"><span class="keyword">import</span> DateTimePicker <span class="keyword">from</span> <span class="string">'react-widgets/lib/DateTimePicker'</span>;</span><br><span class="line"><span class="keyword">import</span> moment <span class="keyword">from</span> <span class="string">'moment'</span>;</span><br><span class="line"><span class="keyword">import</span> momentLocaliser <span class="keyword">from</span> <span class="string">'react-widgets/lib/localizers/moment'</span>;</span><br><span class="line"></span><br><span class="line">momentLocaliser(moment);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> renderDatePicker = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> input = props.input;</span><br><span class="line">  <span class="comment">//console.log(input);</span></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;DateTimePicker</span><br><span class="line">      name=&#123;input.name&#125;</span><br><span class="line">      onBlur=&#123;input.onBlur&#125;</span><br><span class="line">      onChange=&#123;input.onChange&#125;</span><br><span class="line">      value=&#123;(input.value &amp;&amp; <span class="keyword">new</span> <span class="built_in">Date</span>(input.value)) || <span class="literal">null</span>&#125;</span><br><span class="line">      className=<span class="string">"mid-text"</span></span><br><span class="line">      format=<span class="string">"YYYY-MM-DD HH:mm:ss"</span></span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//其他form项  </span></span><br><span class="line"></span><br><span class="line">&lt;li&gt;</span><br><span class="line">  &lt;span className=<span class="string">"text"</span>&gt;开始时间：&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div className="time-wrapper"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;Field</span></span><br><span class="line"><span class="regexp">      name="startTime"</span></span><br><span class="line"><span class="regexp">      component=&#123;renderDatePicker</span></span><br><span class="line"><span class="regexp">      className="time-text"</span></span><br><span class="line"><span class="regexp">    /</span>&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;span className="text" style=&#123;&#123; marginLeft: 15 &#125;&#125;&gt; 结束时间：&lt;/</span>span&gt;</span><br><span class="line">  &lt;div className=<span class="string">"time-wrapper"</span>&gt;</span><br><span class="line">    &lt;Field</span><br><span class="line">      name=<span class="string">"endTime"</span></span><br><span class="line">      component=&#123;renderDatePicker&#125;</span><br><span class="line">      className=<span class="string">"time-text"</span></span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>li&gt;</span><br></pre></td></tr></table></figure>
+<p>一切正常，对不对？坑在下面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  state =&gt; (&#123;</span><br><span class="line">    initialValues: &#123;</span><br><span class="line">      ...state.magics.data,</span><br><span class="line">      ...(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> data = state.magics.data;</span><br><span class="line">        <span class="keyword">const</span> timeData = &#123;</span><br><span class="line">          startTime: <span class="literal">null</span>,</span><br><span class="line">          endTime: <span class="literal">null</span>,</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">if</span> (data) &#123;</span><br><span class="line">          <span class="keyword">if</span> (data.startTime) &#123;</span><br><span class="line">            timeData.startTime = <span class="keyword">new</span> <span class="built_in">Date</span>(data.startTime);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (data.endTime) &#123;</span><br><span class="line">            timeData.endTime = <span class="keyword">new</span> <span class="built_in">Date</span>(data.endTime);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> timeData;</span><br><span class="line">      &#125;)(),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">)(ActivityManage);</span><br></pre></td></tr></table></figure>
+<p>这里做一下解释：</p>
+<p>正如前文讲默认值的时候所说，此处也会涉及“新增”和“编辑”两种操作，而两个时间字段又非必填，所以，在用<code>initialValues</code>赋默认值时，要用解构的方法，将其他字段的value从state中取出，解构；然后再用一个解构的方法，返回判断后的包含<code>startTime和endTime为key</code>的<code>object</code>，在使用过程中尤其要注意。</p>
+<p>其他诸如<code>Field Arrays</code>、<code>Remote Sumit</code>、<code>Immutable JS</code>之类的，见官网吧。</p>
+<p><a href="http://redux-form.com/6.7.0/docs/GettingStarted.md/" target="_blank" rel="noopener">http://redux-form.com/6.7.0/docs/GettingStarted.md/</a></p>
+<p>好了，就到这里啦，白白，下次见~</p>
+
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明: 商业转载请联系作者获得授权,非商业转载请注明出处 © Snippet
+            
+        </div>
+        <div>
+            
+                License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/06/23/talk-about-my-career/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
+    
+    
+        <a href="/2017/06/02/zz-fe-js-code-standard/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1966422"></script>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p>主题Snippet v1.1.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request。<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//wumingli.github.io" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:17978611@qq.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="//weibo.com/wumingli" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">Categories</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/"><i class="fa" aria-hidden="true">css</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/front-article/"><i class="fa" aria-hidden="true">front article</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/"><i class="fa" aria-hidden="true">html</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/"><i class="fa" aria-hidden="true">javascript</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/personal/"><i class="fa" aria-hidden="true">personal</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">Archives</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">September 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">July 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/"><i class="fa" aria-hidden="true">June 2016</i></a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+
+        
+        
+    <div class="widget">
+        <h3 class="title">Friends</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.shenliyang.com" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <script src="/assets/highlight.pack.js?rev=@@hash"></script>
+  <script>
+    hljs.initHighlightingOnLoad(); //初始化代码高亮 
+  </script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
