@@ -24,7 +24,7 @@
     <!--Title-->
 
 
-<title>Archives: 2017 | 武明礼个人博客</title>
+<title>高内聚-低耦合，如何让我们的组件拆分（设计）更优雅 | 武明礼个人博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="武明礼个人博客" type="application/atom+xml">
@@ -36,6 +36,8 @@
 
 
 
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css?rev=9.12.0">
 
 
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
@@ -116,44 +118,78 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <div id="main">
-  <div id="post-list">
-    <ul class="archives-post-list">
-    	<h1 class="info">2017年 月</h1>
-        
-          <li class="post-items" _href="/2017/05/17/zz-fe-code-standard/">
-            <h3 class="post-item-title">
-            	<a href="/2017/05/17/zz-fe-code-standard/"> 转转前端代码规范 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2017/04/25/wechat-video-autoplay/">
-            <h3 class="post-item-title">
-            	<a href="/2017/04/25/wechat-video-autoplay/"> video在微信浏览器（webview）下不能自动播放解决方法 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2017/02/20/what-the-react-demo-do/">
-            <h3 class="post-item-title">
-            	<a href="/2017/02/20/what-the-react-demo-do/"> 脚手架创建出来的React Demo使用说明 </a>
-            </h3>  
-          </li>
-        
-    </ul>
-  </div>
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="高内聚-低耦合，如何让我们的组件拆分（设计）更优雅">
+            
+            高内聚-低耦合，如何让我们的组件拆分（设计）更优雅
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <span>前端</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            react
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2017/12/12</span>
+    </span>
 </div>
 
-    <nav class="pagination" role="navigation">
-        <div id="page-nav">
-            <a class="extend prev" rel="prev" href="/archives/2017/"><i class='fa fa-angle-left'></i></a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
+            
+            
+    </div>
+    
+    <div class="post-body">
+        <h2 id="高内聚"><a href="#高内聚" class="headerlink" title="高内聚"></a>高内聚</h2><p>高内聚是指把逻辑紧密相关的内容放在一个组件中。<br><code>React天生特点</code><br>用户界面无外乎内容、交互行为和样式。传统上，内容由HTML表示，交互行为放在JavaScript代码文件中，样式放在CSS文件中定义。这虽然满足一个功能模块的需要，却要放在三个不同的文件中，这其实不满足高内聚的原则。React却不是这样，展示内容的JSX、定义行为的JavaScript代码，甚至定义样式的CSS，都可以放在一个JavaScript文件中，因为它们本来就是为了实现一个目的而存在的，所以说React天生具有高内聚的特点。 </p>
+<p>高内聚与面向对象设计中的<code>单一职责原则</code>不谋而合。</p>
+<h3 id="单一职责原则SRP-Single-Responsibility-Principle"><a href="#单一职责原则SRP-Single-Responsibility-Principle" class="headerlink" title="单一职责原则SRP(Single Responsibility Principle)"></a>单一职责原则SRP(Single Responsibility Principle)</h3><p>单一职责原则又称<code>单一功能原则</code>，面向对象五个基本原则（SOLID）之一，它规定一个类应该只有一个发生变化的原因。</p>
+<blockquote>
+<p>未完待续</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明: 商业转载请联系作者获得授权,非商业转载请注明出处 © Wumingli
+            
         </div>
-    </nav>
+        <div>
+            
+                License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a>
+            
+        </div>  
+    </div>
+</article>
 
-
-
-
-
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/12/13/asnyc-react/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
+    
+    
+        <a href="/2017/06/23/talk-about-my-career/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
                 </main>
                 
     <aside class="col-md-4 sidebar">
@@ -207,7 +243,7 @@
         
     <div class="widget">
         <h3 class="title">Categories</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/"><i class="fa" aria-hidden="true">css</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/front-article/"><i class="fa" aria-hidden="true">front article</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/"><i class="fa" aria-hidden="true">html</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/"><i class="fa" aria-hidden="true">javascript</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/personal/"><i class="fa" aria-hidden="true">personal</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">1</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/"><i class="fa" aria-hidden="true">css</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/front-article/"><i class="fa" aria-hidden="true">front article</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/"><i class="fa" aria-hidden="true">html</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/"><i class="fa" aria-hidden="true">javascript</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/"><i class="fa" aria-hidden="true">personal</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">3</span></li></ul>
     </div>
 
 
@@ -215,12 +251,19 @@
         
     <div class="widget">
       <h3 class="title">Archives</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">September 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">July 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/"><i class="fa" aria-hidden="true">June 2016</i></a><span class="archive-list-count">1</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">December 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">September 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">July 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/"><i class="fa" aria-hidden="true">June 2016</i></a><span class="archive-list-count">1</span></li></ul>
     </div>
 
 
         
         
+  <div class="widget">
+    <h3 class="title">Tag Cloud</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/react/" style="font-size: 10px;">react</a>
+    </div>
+  </div>
+
 
         
         
@@ -272,10 +315,26 @@
 
   <script src="/assets/highlight.pack.js?rev=@@hash"></script>
   <script>
-    hljs.initHighlightingOnLoad(); //初始化代码高亮 
+    hljs.configure({
+      tabReplace: '  ',
+      useBR: false
+    });
+    hljs.initHighlighting(); //初始化代码高亮 
   </script>
 
 <script src="/js/app.js?rev=@@hash"></script>
+<style>
+.code pre br {
+    display: none;
+  }
+  td.code pre {
+    padding:10px;
+    background-color:#f0f0f0;
+  }
+  td.code pre span.hljs {
+    padding: 0.075em 0
+  }
+</style>
 
 </body>
 </html>
