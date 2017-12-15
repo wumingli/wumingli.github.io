@@ -1051,3 +1051,14 @@ pre {
     margin-bottom: 10px;
   }
 }
+
+.code pre br {
+  display: none;
+}
+td.code pre {
+  padding:10px;
+  background-color:#f0f0f0;
+}
+td.code pre span.hljs {
+  padding: 0.075em 0
+}
