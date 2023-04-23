@@ -79,3 +79,9 @@ theme: snippet
 deploy:
   type: git
   repo: git@github.com:wumingli/wumingli.github.io.git
+
+defaults:
+  - scope:
+      path: "/"
+#    values:
+#      image: true
