@@ -82,6 +82,6 @@ deploy:
 
 defaults:
   - scope:
-      path: "/"
+      path: "/files"
 #    values:
 #      image: true
